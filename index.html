@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi" style="font-size: 14px;">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./assets/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVN A0</title>
+  <style>
+    /* #rasa-chat-widget-container {
+      top: 10px !important;
+      right: 15px !important;
+      bottom: auto !important;
+    }
+
+    #rasa-chat-widget-container>div {
+      margin-bottom: 0 !important;
+    }
+
+    #rasa-chat-widget-container button.large {
+      border-radius: 5px;
+      width: auto;
+      height: auto;
+      box-shadow: none;
+    } */
+
+    #rasa-chat-widget-container button.large {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body style="margin: 0px !important;">
+  <div id="app_config" VITE_SERVER_URL="" BASE_URL="" VITE_BASE_SRC="" style="display: none;"></div>
+  <div id="rasa-chat-widget" data-initial-payload="bạn có thể làm gì?" data-width="600" data-height="600"
+    data-avatar-url="http://localhost:5000/assets/img/logo.png" data-font="Segoe UI,Tahoma,sans-serif"
+    data-websocket-url="http://localhost:5003/socket.io"></div>
+  <script>
+    let resp;
+    let xmlHttp;
+    resp = '';
+    xmlHttp = new XMLHttpRequest();
+    if (xmlHttp != null) {
+      xmlHttp.open("GET", "/config.json", false);
+      xmlHttp.send(null);
+      resp = xmlHttp.responseText;
+    }
+    let data = JSON.parse(resp)
+    // if (location.origin) {
+    //   data.VITE_SERVER_URL = location.origin;
+    //   data.VITE_CHATBOT_URL = data.VITE_SERVER_URL + '/socket.io';
+    // }
+
+    document.getElementById("app_config").setAttribute('VITE_SERVER_URL', data.VITE_SERVER_URL);
+    document.getElementById("app_config").setAttribute('BASE_URL', data.BASE_URL);
+    document.getElementById("app_config").setAttribute('VITE_BASE_SRC', data.VITE_BASE_SRC);
+    document.getElementById("rasa-chat-widget").setAttribute('data-websocket-url', data.VITE_CHATBOT_URL);
+    document.getElementById("rasa-chat-widget").setAttribute('data-avatar-url', data.VITE_SERVER_URL + '/assets/img/logo.png');
+  </script>
+  <div id="app"></div>
+  <link id="theme-link" rel="stylesheet" href="/themes/light-mode/theme.css">
+
+  <script type="module" src="/src/assets/widget.js" type="application/javascript"></script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
