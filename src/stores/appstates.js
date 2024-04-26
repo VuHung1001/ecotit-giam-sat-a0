@@ -105,6 +105,14 @@ export const useAppStatesStore = defineStore('appstates', {
                     self.enableCheckCanhBao = false;
                     self.enableNoti = false;
                     if (useStateHubStore().functions.giamSatBanChao != null && useStateHubStore().functions.giamSatBanChao.functions.length > 0) {
+                        let a0 = {
+                            label: "A0 API",
+                            icon: env.VITE_BASE_SRC + useStateHubStore().functions.giamSatBanChao.icon,
+                            router: "/a0",
+                            active: false,
+                            visible: true,
+                            navbars: []
+                        }
                         let giamSatBanChao = {
                             label: useStateHubStore().functions.giamSatBanChao.name,
                             icon: env.VITE_BASE_SRC + useStateHubStore().functions.giamSatBanChao.icon,
@@ -122,6 +130,7 @@ export const useAppStatesStore = defineStore('appstates', {
                             };
                             giamSatBanChao.navbars.push(nav)
                         });
+                        self.sidebars.push(a0)
                         self.sidebars.push(giamSatBanChao)
                     }
                     if (useStateHubStore().functions.giamSatCongBoCongSuat != null && useStateHubStore().functions.giamSatCongBoCongSuat.functions.length > 0) {

@@ -23,6 +23,11 @@ const router = createRouter({
             name: 'accessdenied',
             component: () => import('../views/AccessDenied.vue')
         },
+        {
+            path: '/a0',
+            name: 'a0',
+            component: () => import('../views/A0-api.vue')
+        },
     ]
 })
 

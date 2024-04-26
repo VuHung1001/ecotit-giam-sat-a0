@@ -84,6 +84,27 @@
 * {
     box-sizing: border-box;
 }
+
+.d-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.h-50 {
+    height: 50px;
+}
+
+.gap-3 {
+    gap: 1.5rem;
+}
+
 .p-component {
     font-family:
         Segoe UI,
